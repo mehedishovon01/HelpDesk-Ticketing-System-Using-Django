@@ -1,149 +1,45 @@
 {% load static %}
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <!-- IE Compatibility modes -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Mobile first -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>{% block title %}{% endblock %}</title>
-    {% comment %}
-    <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x" />
-    <meta name="author" content="" />
+    <title>{% block title %}HelpDesk | Home{% endblock %}</title>
 
-    <meta name="msapplication-TileColor" content="#5bc0de" />
-    <meta name="msapplication-TileImage" content="{% static 'img/metis-tile.png' %}" />
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{% static 'statictlib/bootstrap/css/bootstrap.css' %}" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{% static 'export/font-awesome.min.css' %}" />
-    <!-- Metis core stylesheet -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-    <!-- metisMenu stylesheet -->
-    <link rel="stylesheet" href="{% static 'statictlib/metismenu/metisMenu.css' %}" />
-    <!-- onoffcanvas stylesheet -->
-    <link rel="stylesheet" href="{% static 'statictlib/onoffcanvas/onoffcanvas.css' %}" />
-    <!-- animate.css stylesheet -->
-    <link rel="stylesheet" href="{% static 'statictlib/animate.css/animate.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/style-switcher.css' %}" />
-    <link rel="stylesheet/less" type="text/css" href="{% static 'less/theme.less' %}" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.5/fullcalendar.min.css" /> 
-    {% endcomment %}
-
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
-    <!-- Metis core stylesheet -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/metisMenu/1.1.3/metisMenu.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.5/fullcalendar.min.css">
-    <link rel="stylesheet" href="{% static 'css/style-switcher.css' %}" />
-    <link rel="stylesheet/less" type="text/css" href="{% static 'less/theme.less' %}" />
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
+    {% include '_partials/_includes/_css.html' %}
 </head>
 
-<body class="">
-    <div class="bg-dark dk" id="wrap">
-        <div id="top">
-            {% include '_partials/_top.html' %}
-            <!-- /.navbar -->
-            <header class="head">
-                <div class="search-bar">
-                    <form class="main-search" action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Live Search ...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary btn-sm text-muted" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+<body>
+
+    {% include '_partials/_loader.html' %}
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {% include '_partials/_nav.html' %}
+
+            {% include '_partials/_unknown.html' %}
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    {% include '_partials/_sidebar.html' %}
+
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+
+                                {% block content %}{% endblock %}
+                                
+                                <div id="styleSelector">
+                                </div>
+                            </div>
                         </div>
-                    </form>
-                    <!-- /.main-search -->
-                </div>
-                <!-- /.search-bar -->
-                <div class="main-bar">
-                    <h3><i class="fa fa-{% block page_logo %}{% endblock %}"></i>&nbsp;{% block page %}{% endblock %}</h3>
-                </div>
-                <!-- /.main-bar -->
-            </header>
-            <!-- /.head -->
-        </div>
-        <!-- /#top -->
-
-        {% include '_partials/_sidebar.html' %}
-
-        <div id="content">
-            {% block content %}
-            {% endblock %}
-        </div>
-        <!-- /#content -->
-    </div>
-    <!-- /#wrap -->
-    <footer class="Footer bg-dark dker">
-        <p>2023 &copy; Help-Desk</p>
-    </footer>
-    <!-- /#footer -->
-
-    <!-- #helpModal -->
-    <div id="helpModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
-    <!-- /#helpModal -->
 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.5/fullcalendar.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.18.4/js/jquery.tablesorter.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.selection.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.resize.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/metisMenu/1.1.3/metisMenu.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/screenfull.js/2.0.0/screenfull.min.js"></script>
-    <script src="https://colorlib.com/polygon/metis/assets/js/core.min.js"></script>
-    <script src="https://colorlib.com/polygon/metis/assets/js/app.js"></script>
-    <script>
-        $(function () {
-            Metis.dashboard();
-        });
-    </script>
-    <script src="https://colorlib.com/polygon/metis/assets/js/style-switcher.min.js"></script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317"
-        integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
-        data-cf-beacon='{"rayId":"824e0e25186e3378","version":"2023.10.0","token":"cd0b4b3a733644fc843ef0b185f98241"}'
-        crossorigin="anonymous"></script>
-
+    {% include '_partials/_includes/_js.html' %}
 </body>
 
 </html>

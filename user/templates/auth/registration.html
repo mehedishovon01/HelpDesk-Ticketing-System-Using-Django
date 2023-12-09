@@ -1,0 +1,55 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}HelpDesk | Registration{% endblock %}</title>
+    {% include '_partials/_includes/_css.html' %}
+</head>
+
+<body class="fix-menu">
+
+    {% include '_partials/_loader.html' %}
+
+    <section class="login-block">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form method="POST" class="md-float-material form-material">
+                        {% csrf_token %}
+                        <div class="text-center">
+                            <img src="{% static 'assets/images/logo.png' %}" alt="logo.png">
+                        </div>
+                        <div class="auth-box card">
+                            <div class="card-block">
+                                <div class="row m-b-20">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center txt-primary">Sign up</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group form-primary">{{ form|crispy }}</div>
+
+                                <div class="row m-t-30">
+                                    <div class="col-md-12">
+                                        <button type="submit"
+                                            class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign
+                                            up now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {% include '_partials/_includes/_js.html' %}
+</body>
+
+</html>

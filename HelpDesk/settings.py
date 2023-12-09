@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 
+    'crispy_forms',
+    'crispy_bootstrap5',
+
     # Installed Apps
     'user.apps.UserConfig',
 ]
@@ -148,5 +152,10 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 # Login redirection
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
+
+# Installed Library
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5' 

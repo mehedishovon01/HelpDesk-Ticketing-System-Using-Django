@@ -1,0 +1,28 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}HelpDesk | Logout{% endblock %}</title>
+    {% include '_partials/_includes/_css.html' %}
+</head>
+
+<body class="fix-menu">
+    {% include '_partials/_loader.html' %}
+    <section class="login-block">
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>You have been logged out</h2>
+                    <div class="border-top pt-3">
+                        <link>
+                            <a class="text-c-blue" href="{% url 'login' %}">Log In Again</a>
+                        </link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include '_partials/_includes/_js.html' %}
+</body>
+</html>
