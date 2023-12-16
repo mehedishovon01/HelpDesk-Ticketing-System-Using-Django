@@ -6,7 +6,7 @@
             <a class="mobile-menu" id="mobile-collapse" href="#!">
                 <i class="feather icon-menu"></i>
             </a>
-            <a href="../index.html">
+            <a href="{% url "dashboard" %}">
                 <img class="img-fluid" src="{% static 'assets/images/logo.png' %}" alt="Theme-Logo" />
             </a>
             <a class="mobile-options">
@@ -111,18 +111,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="user-profile.html">
+                                <a href="{% url 'profile' %}">
                                     <i class="feather icon-user"></i> Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="email-inbox.html">
-                                    <i class="feather icon-mail"></i> My Messages
-                                </a>
-                            </li>
-                            <li>
-                                <a href="auth-lock-screen.html">
-                                    <i class="feather icon-lock"></i> Lock Screen
+                                <a href="{% url 'change_password' %}">
+                                    <i class="feather icon-mail"></i> Change Password
                                 </a>
                             </li>
                             <li>
