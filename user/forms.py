@@ -15,16 +15,19 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'phone', 'email', 'password1', 'password2']
 
 """
-User Update form. Where user can update their profile details
+User Update form. Where user can update their Name & email
 """
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email']
+        fields = ['first_name', 'last_name', 'email']
 
 
+"""
+User Update form. Where user can update their profile details
+"""
 class ProfileUpdateForm(forms.ModelForm):
     image = forms.ImageField()
     phone = forms.CharField()
