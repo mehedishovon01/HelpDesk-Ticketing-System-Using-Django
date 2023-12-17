@@ -88,5 +88,7 @@ I am using `MySQL` database here. To configure MySQL in your Django project, you
     }
 
 
+[See User](user/readme.md)
+
 
 Thanks for reading.
