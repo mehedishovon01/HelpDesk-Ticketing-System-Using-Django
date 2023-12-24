@@ -1,0 +1,125 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+  Help Desk | Home
+{% endblock %}
+{% block page %}
+  Dashboard
+{% endblock %}
+{% block page_logo %}
+  dashboard
+{% endblock %}
+{% block nav_home_class %}
+  active
+{% endblock %}
+{% block content %}
+  <div class="page-wrapper">
+    <div class="page-header">
+      <div class="row align-items-end">
+        <div class="col-lg-8">
+          <div class="page-header-title">
+            <div class="d-inline">
+              <h4>DataTable of Tickets</h4>
+              <span>Real power of DataTables</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="page-header-breadcrumb">
+            <ul class="breadcrumb-title">
+              <li class="breadcrumb-item" style="float: left;">
+                <a href="{% url 'dashboard' %}"><i class="feather icon-home"></i></a>
+              </li>
+              <li class="breadcrumb-item" style="float: left;">
+                <a href="#!">Tickets</a>
+              </li>
+              <li class="breadcrumb-item" style="float: left;">
+                <a href="#!">Data Table</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="card">
+        <div class="card-header">
+          <h5>Zero Configuration</h5>
+          <button type="button" class="btn btn-primary waves-effect float-right" data-toggle="modal" data-target="#large-Modal">Add New Ticket</button>
+          <span>DataTables has most features enabled by default, so all you need to do to use it with your own ables is to call the construction function: $().DataTable();.</span>
+        </div>
+        <div class="card-block">
+          <div class="mt-2 dt-responsive table-responsive">
+            <table id="simpletable" class="table table-striped table-bordered nowrap">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Status</th>
+                  <th>Waiting For</th>
+                  <th>AssignedTo</th>
+                  <th width="50px">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for ticket in tickets %}
+                <tr>
+                  <td>{{ ticket.title }}</td>
+                  <td>
+                    {% if ticket.status == "TODO" %}
+                    <span class="label label-danger">TODO</span>
+                    {% elif ticket.status == "IN PROGRESS" %}
+                    <span class="label label-default">IN PROGRESS</span>
+                    {% elif ticket.status == "WAITING" %}
+                    <span class="label label-warning">WAITING</span>
+                    {% elif ticket.status == "DONE" %}
+                    <span class="label label-success">DONE</span>
+                    {% else %}
+                    {{ ticket.status }}
+                    {% endif %}
+                  </td>
+                  <td>{% if ticket.waiting_for %}{{ ticket.waiting_for }}{% else %}---{% endif %}</td>
+                  <td>{% if ticket.assigned_to %}{{ ticket.assigned_to }}{% else %}---{% endif %}</td>
+                  <td>
+                    <div>
+                        <a href="{% url 'ticket_detail' ticket_id=ticket.id %}" class="btn btn-sm btn-success btn-outline-success btn-icon"><i class="icofont icofont-plus-circle"></i></a>
+                        <a href="{% url 'ticket_delete' ticket_id=ticket.id %}" class="btn btn-danger btn-outline-danger btn-icon"><i class="icofont icofont-ui-delete"></i></a>
+                        </div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <form method="POST" class="form-horizontal" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Modal title</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                {{ form|crispy }}
+                <span class="messages"></span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Save changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

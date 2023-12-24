@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # Installed Apps
     'user.apps.UserConfig',
+    'ticket.apps.TicketConfig',
 ]
 
 MIDDLEWARE = [

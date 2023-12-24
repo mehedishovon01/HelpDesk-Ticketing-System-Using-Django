@@ -23,13 +23,12 @@ class ProfileDetails(models.Model):
     Defining this class is meant to store information related to a user's profile. 
     Additionally, here defined an inner class named GenderChoices & MaritailChoices within the ProfileDetails model, 
     and it inherits from models.TextChoices. This inner class is used to define choices for the gender and martail_status field.
-    Name_of_the_Class: inner class
+    Name_of_the_Class: model class
     """
     # Gender Choices are defined here
     class GenderChoices(models.TextChoices):
         """
         This class is an enumeration class that defines choices for the gender field in the ProfileDetails model.
-        Each choice is represented as a pair of a human-readable name (e.g., 'Male') and its corresponding value (e.g., 'Male'). 
         values: string literals
         Name_of_the_Class: enumeration class
         """
@@ -41,7 +40,6 @@ class ProfileDetails(models.Model):
     class MaritailChoices(models.TextChoices):
         """
         This class is an enumeration class that defines choices for the martail_status field in the ProfileDetails model.
-        Each choice is represented as a pair of a human-readable name (e.g., 'Maried') and its corresponding value (e.g., 'Maried').
         values: string literals
         Name_of_the_Class: enumeration class
         """
@@ -55,10 +53,20 @@ class ProfileDetails(models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=100, null=True)
-    image = models.ImageField(default='profile_pics/default.jpeg', upload_to='profile_pics', null=True)
+    image = models.ImageField(default='profile_pics/default.jpeg', 
+                              upload_to='profile_pics', 
+                              null=True)
     dob = models.DateField(max_length=100, null=True)
-    gender = models.CharField(choices=GenderChoices.choices, default=GenderChoices.Male, max_length=255, blank=True, null=True)
-    martail_status = models.CharField(choices=MaritailChoices.choices, default=MaritailChoices.Maried, max_length=255, blank=True, null=True)
+    gender = models.CharField(choices=GenderChoices.choices, 
+                              default=GenderChoices.Male, 
+                              max_length=255, 
+                              blank=True, 
+                              null=True)
+    martail_status = models.CharField(choices=MaritailChoices.choices, 
+                                      default=MaritailChoices.Maried, 
+                                      max_length=255, 
+                                      blank=True, 
+                                      null=True)
     address = models.TextField(max_length=600, null=True)
     linkedin = models.CharField(max_length=100, null=True)
     occupation = models.CharField(max_length=100, null=True)

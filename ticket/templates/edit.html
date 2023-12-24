@@ -1,0 +1,69 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+  Help Desk | Home
+{% endblock %}
+{% block page %}
+  Dashboard
+{% endblock %}
+{% block page_logo %}
+  dashboard
+{% endblock %}
+{% block nav_home_class %}
+  active
+{% endblock %}
+{% block content %}
+  <div class="page-wrapper">
+    <div class="page-header">
+      <div class="row align-items-end">
+        <div class="col-lg-8">
+          <div class="page-header-title">
+            <div class="d-inline">
+              <h4>DataTable of Tickets</h4>
+              <span>Real power of DataTables</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="page-header-breadcrumb">
+            <ul class="breadcrumb-title">
+              <li class="breadcrumb-item" style="float: left;">
+                <a href="{% url 'dashboard' %}"><i class="feather icon-home"></i></a>
+              </li>
+              <li class="breadcrumb-item" style="float: left;">
+                <a href="#!">Tickets</a>
+              </li>
+              <li class="breadcrumb-item" style="float: left;">
+                <a href="#!">Data Table</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="card">
+        <div class="card-header">
+          <h5>Zero Configuration</h5>
+          <span>DataTables has most features enabled by default, so all you need to do to use it with your own ables is to call the construction function: $().DataTable();.</span>
+        </div>
+        <div class="card-block">
+          <div class="mt-2 dt-responsive table-responsive">
+            <form method="POST" class="form-horizontal" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        {{ ticket|crispy }}
+                        <span class="messages"></span>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light float-right">Save changes</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

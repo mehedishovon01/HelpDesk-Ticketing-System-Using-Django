@@ -4,7 +4,7 @@
       <div class="pcoded-navigatio-lavel">Navigation</div>
       <ul class="pcoded-item pcoded-left-item">
           <li class="active">
-              <a href="javascript:void(0)">
+              <a href="{% url 'dashboard' %}">
                   <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                   <span class="pcoded-mtext">Dashboard</span>
               </a>
@@ -18,18 +18,18 @@
       </ul>
       <div class="pcoded-navigatio-lavel">Ticket Information</div>
       <ul class="pcoded-item pcoded-left-item">
-          <li class=" ">
+        <li class=" ">
+            <a href="{% url 'create-ticket' %}">
+                <span class="pcoded-micon"><i class="feather icon-cpu"></i></span>
+                <span class="pcoded-mtext">Tickets</span>
+                <span class="pcoded-badge label label-danger">HOT</span>
+            </a>
+        </li>  
+        <li class=" ">
               <a href="animation.html">
                   <span class="pcoded-micon"><i
                           class="feather icon-aperture rotate-refresh"></i><b>A</b></span>
                   <span class="pcoded-mtext">Animations</span>
-              </a>
-          </li>
-          <li class=" ">
-              <a href="sticky.html">
-                  <span class="pcoded-micon"><i class="feather icon-cpu"></i></span>
-                  <span class="pcoded-mtext">Sticky Notes</span>
-                  <span class="pcoded-badge label label-danger">HOT</span>
               </a>
           </li>
       </ul>
